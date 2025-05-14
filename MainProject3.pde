@@ -5,6 +5,7 @@ color red = #E50505;
 color yellow = #E5D305;
 color orange = #E56A05;
 color black = #000000;
+color white = #FFFFFF;
 
 color selectedColor;
 
@@ -55,7 +56,9 @@ void draw() {
   line(220, 70, 400, 70);
   circle(sliderX, 70, 40);
   //erase
-  
+  rect(630, 10, 50, 50);
+  fill(black);
+  text("erase", 640, 35);
 }
 
 void mouseDragged() {
@@ -95,6 +98,10 @@ void mouseReleased() {
   }
   if (mouseX > 130 && mouseX < 180 && mouseY > 70 && mouseY < 120) {
     selectedColor = black;
+  }
+  //eraser
+    if (mouseX > 630 && mouseX < 680 && mouseY > 10 && mouseY < 60) {
+    selectedColor = white;
   }
   controlSlider();
 }
