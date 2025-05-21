@@ -58,7 +58,23 @@ void draw() {
   //erase
   rect(630, 10, 50, 50);
   fill(black);
-  text("erase", 640, 35);
+  text("Erase", 640, 35);
+  //clear button
+  fill(white);
+  circle(580, 35, 50);
+  fill(black);
+  text("Clear", 568, 39);
+  //save button
+  fill(white);
+  rect(630, 70, 50, 50);
+  fill(black);
+  text("Save", 645, 97);
+  //load button
+  fill(white);
+  rect(555, 70, 50, 50);
+  fill(black);
+  text("Load", 570, 97);
+  
 }
 
 void mouseDragged() {
@@ -103,7 +119,26 @@ void mouseReleased() {
     if (mouseX > 630 && mouseX < 680 && mouseY > 10 && mouseY < 60) {
     selectedColor = white;
   }
+  //clear
+  if (mouseX > 580 && mouseX < 620 && mouseY > 35 && mouseY < 85){
+  background(white);
+  }
+  //save
+  if(mouseX > 630 && mouseX < 680 && mouseY > 70 && mouseY < 120){
+  selectOutput("processing-4.3", "saveImage");
+  }
+  //load
+  if (mouseX > 555 && mouseX < 605 && mouseY > 70 && mouseY < 120){
+  selectInput("processing-4.3", "openImage");
+  }
   controlSlider();
+}
+
+void saveImage(File f) {
+if (f != null) {
+PImage canvas = get(71, 1, width-71, height-1);
+canvas.save(f.getAbsolutePath());
+}
 }
 
 void tactile(int x, int y, int w, int h) {
